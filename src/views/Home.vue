@@ -22,7 +22,7 @@
 <style scoped>
 
 .home {
-  margin: 2rem;
+  margin: 1rem;
 }
 
 </style>

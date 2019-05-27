@@ -9,24 +9,6 @@
   </div>
 </template>
 
-<script>
-
-$(window).scroll(function (){
-
-  var header = document.getElementById('nav');
-
-  if ($(window).scrollTop() >= 75) {
-    $('#nav').addClass('sticky');
-    $('#home').addClass('fixed-text');
-  } else {
-    $('#nav').removeClass('sticky');
-    $('#home').removeClass('fixed-text');
-  }
-});
-
-export default { }
-</script>
-
 
 <style>
 #app {
@@ -38,7 +20,7 @@ export default { }
 
 #nav {
   padding: 0.5rem;
-  margin: 0 0 5rem 0;
+  margin: 0 0 2rem 0;
   background: linear-gradient(#bd5d38, #e56f44);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
@@ -71,8 +53,26 @@ body {
 }
 
 .fixed-text {
-  padding-top: 125px;
+  padding-top: 90px;
 }
 
 </style>
 
+<script>
+
+$(window).scroll(function() {
+  if ($(window).scrollTop() > 0) {
+    $('#nav').addClass('sticky');
+    $('#home').addClass('fixed-text');
+    $('#detail').addClass('fixed-text');
+    $('#randomizer').addClass('fixed-text');
+  } else {
+    $('#nav').removeClass('sticky');
+    $('#home').removeClass('fixed-text');
+    $('#detail').removeClass('fixed-text');
+    $('#randomizer').removeClass('fixed-text');
+  }
+});
+
+export default { };
+</script>
