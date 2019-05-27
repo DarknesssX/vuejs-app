@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
+import Details from './views/Details.vue';
+import Randomizer from './views/Randomizer.vue';
 
 Vue.use(Router);
 
@@ -14,18 +16,14 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/detailpage',
-      name: 'detail',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/Details.vue'),
+      path: '/details',
+      name: 'details',
+      component: Details,
     },
     {
       path: '/randomizer',
       name: 'randomizer',
-
-      component: () => import('./views/Randomizer.vue'),
+      component: Randomizer,
     },
   ],
 });

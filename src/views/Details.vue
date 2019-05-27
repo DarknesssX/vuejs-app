@@ -4,3 +4,11 @@
     <!-- Import Detailpage functionality below -->
   </div>
 </template>
+
+<style scoped>
+
+.detailpage {
+  margin: 1rem;
+}
+
+</style>
