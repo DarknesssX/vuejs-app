@@ -60,7 +60,7 @@ body {
 
 <script>
 
-$(window).scroll(function() {
+$(window).scroll(() => {
   if ($(window).scrollTop() > 0) {
     $('#nav').addClass('sticky');
     $('#home').addClass('fixed-text');
