@@ -1,7 +1,7 @@
 <template>
   <div id="home" class="home">
     
-    <GetAnime />
+    <GetAnime v-for="index in 10" :key="index" />
 
     <h1>This is the Home Page</h1>
     <!-- Import Details of Homepage below -->
