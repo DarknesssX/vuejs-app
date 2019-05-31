@@ -1,9 +1,11 @@
 <template v-for="allAnime in 10">
-    <ul>
-        <li>
-            {{ allAnime }}
-        </li>
-    </ul>
+    <div>
+        <ul>
+            <li>
+                <!--{{ allAnime }}-->
+            </li>
+        </ul>
+    </div>
 </template>
 
 <style scoped>
@@ -12,7 +14,7 @@
 
 <script lang="ts">
 
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import JikanTS from 'jikants';
 
 const range = (size: number, startAt: number = 1) => [...Array(size).keys()].map((i) => (i) + startAt);
@@ -27,6 +29,16 @@ function getAnime(cap: number) {
     console.log(allAnime[10]);
 })();
 
-export default class TenAnime extends Vue { }
+@Component
+export default class GetAnime extends Vue {
+
+    private title: string = '';
+
+    private mounted() {
+        getAnime(10).then((response) => {
+            console.log(response);
+        });
+    }
+ }
 
 </script>

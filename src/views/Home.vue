@@ -34,12 +34,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import GetAnime from '@/components/HomeComponent.vue';
+import GetAnime from '@/components/HomeComponents.vue';
 
 @Component({
-  components: {
-    GetAnime,
-  },
+  components: { GetAnime },
 })
 
 export default class Home extends Vue {}
