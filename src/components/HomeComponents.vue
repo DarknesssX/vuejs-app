@@ -1,16 +1,46 @@
-<template>
-    <div>
-        <ul>
-            <li>
-                {{ this.title }}
-            </li>
-        </ul>
-    </div>
+<template v-for="index in 10" :key="index">
+  <!--<ul>
+     anime 
+    <li v-for="anime in animeList.results" :key="anime">
+        Retrieves the Titles of the animes in the array
+        {{ anime.title }}
+        Retrieves the Episodes of the specific anime
+        {{ anime.Episodes }}
+    </li>
+    <li v-for="index in 10" v-bind:key="index">
+      {{ this.title }}
+    </li></ul>-->
+  <div class="table-resonsive">
+    <table class="table table-bordered table-hover table-dark">
+        <thead class="table-header--background">
+        <tr>
+            <td>Name</td>
+        </tr>
+        </thead>
+        <tbody class="table-content--background">
+        <tr v-for="anime in animeList.results" :key="anime.id">
+            <td> {{ anime.title }} </td>
+        </tr>
+        </tbody>
+    </table>
+  </div>
+
 </template>
 
 <style scoped>
 /* Stying of the List comes here... */
+
+ .table-dark td {
+    border-color: #773a23;
+ }
+ .table-header--background {
+    background: #773a23;
+ }
+ .table-content--background {
+    background: #bd5d38;
+ }
 </style>
+
 
 <script lang="ts">
 
@@ -20,57 +50,29 @@ import JikanTS from 'jikants';
 import JikanWrap from '@/modules/JikanWrapper.ts';
 import { AnimeList } from 'jikants/dist/src/interfaces/user/AnimeList';
 
-/* const range = (size: number, startAt: number = 1) => [...Array(size).keys()].map((i) => (i) + startAt);
- function getAnime(cap: number) {
-     const anime = range(cap).map(JikanTS.Anime.byId);
-     return Promise.all(anime);
- }
- (async () => {
-     const allAnime = await getAnime(100);
-     console.log(allAnime(10));
-     // JikanTS.Anime.byId(1).then(b => console.log(b));
- })();*/
-
 @Component
 export default class GetAnime extends Vue {
 
   /* Declared the "searchResult" as the JikanWrap reqeust which searches anime and orders them by ID ascended */
-  private searchResult = JikanWrap.request(['search', 'anime'], {order_by: 'id', sort: 'asc'});
-
-  /* Declares the Title of the anime (Default is empty) */
-  private title: string = '';
-  /* Declares the "animeList" array from the array get by "searchResult" */
-  private animeList = [];
+  private searchResult = JikanWrap.request(['search', 'anime'], {order_by: 'id', sort: 'asc', limit: 10});
+  /* Declares an empty array called "animeList" which will */
+  private animeList: any = [{}];
 
   private data() {
     /* Returns the previously declared variables above */
     return {
-      animeList: [],
-      title: '',
+      animeList: [{}],
     };
   }
-  /*private async mounted(): void {
-  }*/
   /* Mounts all the above and sets the variables i want to pass to "Home.vue" to be shown when I call "<GetAnime />" */
-  private mounted(): void  {
-    (async () => {
-      /* loads in the array of searchResults into  "animeList" */
-      this.animeList = await this.searchResult;
-      /* Logs the results of "animeList" */
-      console.log(this.animeList);
-      this.searchResult.then((anime) => {
-        this.title = anime.results[0].title;
-
-        /* for (const results of anime.results) {
-           for (let i = 0; i <= 9; i++) {
-             this.title = anime.results[i].results;
-           }
-         }
-         this.title = (anime).title;
-         console.log(anime.results); */
-      });
-    })();
+  private async mounted(): Promise<void>  {
+    /* loads in the array of searchResults into  "animeList" */
+    this.animeList = await this.searchResult;
+    /* Logs the results of "animeList" */
+    // console.log(this.animeList.results);
+    /* for (let num: number = 0; num <= 9; num++) {
+      this.title = this.animeList.results[num].title;
+    }*/
   }
  }
-
 </script>
