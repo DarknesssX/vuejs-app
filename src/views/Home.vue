@@ -1,10 +1,8 @@
 <template>
   <div id="home" class="home">
-    
-    
     <h1>10 anime from the API</h1>
     <br />
-    <GetAnime />
+    <GetAnime class="home-full--width" />
 
   </div>
 </template>
@@ -13,6 +11,10 @@
 
 .home {
   margin: 1rem;
+}
+
+.home-full--width {
+  margin: -1rem;
 }
 
 </style>
