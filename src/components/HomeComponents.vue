@@ -6,9 +6,9 @@
           <td>Anime Title <button @click="setColumn('title')">Sort</button> </td>
         </tr>
       </thead>
-      <tbody class="table-content--defaultbg">
-        <tr class="table-content--background" v-for="anime in sortedAnimeList" :key="anime.id">
-          <td> <a> {{ anime.title }} </a> </td>
+      <tbody id="table-content" class="table-content--defaultbg">
+        <tr class="table-content--background" v-for="anime in sortedAnimeList" :key="anime.id" @click="goToDetails()" >
+          <td> {{ anime.title }} </td>
         </tr>
       </tbody>
     </table>
@@ -24,6 +24,12 @@
 
   .table-dark td {
       border-color: #e56f44;
+  }
+
+  #table-content a {
+    font-weight: bold;
+    color: rgba(255,255,255,0.5);
+    margin: 1rem;
   }
 
   .table-header--background {
@@ -63,6 +69,10 @@ export default class GetAnime extends Vue {
           1 : ((b[this.column] > a[this.column]) ? -1 : 0));
     }
     return;
+  }
+  /* pushes the page to the Details page when one of the results are tapped or clicked on */
+  private goToDetails() {
+    this.$router.push({path: '/details'});
   }
 
   private setColumn(column: string) {
