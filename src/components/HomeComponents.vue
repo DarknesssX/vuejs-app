@@ -3,12 +3,12 @@
     <table class="table table-bordered table-hover table-dark">
       <thead class="table-header--background">
         <tr>
-          <td>Anime Title <button @click="setColumn('title')">Sort</button> </td>
+          <td class="align-left">Anime Titles <button class="btn btn-primary" @click="setColumn('title')">Sort</button> </td>
         </tr>
       </thead>
       <tbody id="table-content" class="table-content--defaultbg">
         <tr class="table-content--background" v-for="anime in sortedAnimeList" :key="anime.id" @click="goToDetails()" >
-          <td> {{ anime.title }} </td>
+          <td class="align-left"> {{ anime.title }} </td>
         </tr>
       </tbody>
     </table>
@@ -17,7 +17,6 @@
 </template>
 
 <style scoped>
-/* Stying of the List comes here... */
   .full-width {
       margin: 0;
   }
@@ -42,6 +41,23 @@
 
   .table-content--background {
       background: rgba(255,255,255,0.01);
+  }
+
+  .align-left {
+    text-align: left;
+  }
+
+  .btn-primary {
+      background-color:#e56f44;
+      border-color: #e56f44;
+      float: right;
+  }
+  .btn-primary:not(:disabled):not(.disabled):active {
+      background-color: #bd5d38;
+      border-color: #bd5d38;
+  }
+  .btn-primary:focus {
+      box-shadow: rgba(255,255,255,0.5)
   }
 </style>
 

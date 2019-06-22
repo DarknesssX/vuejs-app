@@ -1,0 +1,19 @@
+.page-footer {
+  background: linear-gradient(#e56f44, #bd5d38) !important;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+#footer a {
+  font-weight: bold;
+  color: rgba(255,255,255,0.5);
+  margin: 1rem;
+}
+  
+#footer a.router-link-exact-active {
+  color: #fff;
+}
+
+.row {
+    margin: 1rem;
+}

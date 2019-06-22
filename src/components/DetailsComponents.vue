@@ -3,12 +3,14 @@
     <table class="table table-bordered table-hover table-dark">
       <thead class="table-header--background">
         <tr>
-          <td class="align-left">Anime Title <button class="btn btn-primary" @click="GetNewRandom()">Get new random</button> </td>
+          <td class="table-width align-left"> Anime Title  </td>
+          <td class="table-width align-left"> Synopsis <button class="btn btn-primary" @click="setColumn('title')">Sort Table</button> </td>
         </tr>
       </thead>
       <tbody id="table-content" class="table-content--defaultbg">
-        <tr class="table-content--background">
-          <td class="align-left"> {{ this.animeList.title }} </td>
+        <tr class="table-content--background" v-for="anime in sortedAnimeList" :key="anime.id" @click="goToDetails()" >
+          <td class="table-width align-left"> {{ anime.title }} </td>
+          <td class="table-width align-left"> {{ anime.synopsis }} </td>
         </tr>
       </tbody>
     </table>
@@ -19,7 +21,8 @@
 <style scoped>
 /* Stying of the List comes here... */
   .full-width {
-      margin: 0;
+    margin: 0;
+    padding-bottom: 1rem;
   }
 
   .table-dark td {
@@ -44,11 +47,15 @@
       background: rgba(255,255,255,0.01);
   }
 
+  .table-width {
+      min-width: 150px;
+  }
+
   .align-left {
       text-align: left;
   }
 
-  .btn-primary {
+ .btn-primary {
       background-color:#e56f44;
       border-color: #e56f44;
       float: right;
@@ -71,42 +78,36 @@ import JikanWrap from '@/modules/JikanWrapper.ts';
 import { AnimeList } from 'jikants/dist/src/interfaces/user/AnimeList';
 
 @Component
-export default class GetRandom extends Vue {
+export default class GetAnimeDetails extends Vue {
   /* Declared the "searchResult" as the JikanWrap reqeust which searches anime and orders them by ID ascended */
-  private searchResult = JikanWrap.request(['search', 'anime'], {order_by: 'id', sort: 'asc', limit: 1});
+  private searchResult = JikanWrap.request(['search', 'anime'], {order_by: 'id', sort: 'asc', limit: 10});
   /* Declares an empty array called "animeList" which will */
   private animeList: any = [{}];
   /* Declares an empty string called column for sorting */
   private column: string = '';
-  /* generates a random number that will be used to retrieve a random Anime from the API */
-  private getRanomdId(min: number, max: number) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  /* Sorts all the results in this.animeList if this.animeList has been initialized */
+  get sortedAnimeList() {
+    if (this.animeList) {
+      return this.animeList
+        .sort((a: any, b: any) => (a[this.column] > b[this.column]) ?
+          1 : ((b[this.column] > a[this.column]) ? -1 : 0));
+    }
+    return;
+  }
+  /* pushes the page to the Details page when one of the results are tapped or clicked on */
+  private goToDetails() {
+    this.$router.push({path: '/details'});
   }
 
-  private GetNewRandom() {
-      if (this.animeList) {
-          (async () => {
-            JikanWrap.request(['anime', this.getRanomdId(1, 3000)])
-              .then((anime) => {
-                this.animeList = anime;
-              });
-          })();
-      }
+  private setColumn(column: string) {
+    this.column = column;
   }
   /* Mounts all the above and sets the variables i want to pass to "Home.vue" to be shown when I call "<GetAnime />" */
   private async mounted(): Promise<void> {
     /* loads in the array of searchResults into  "animeList" */
-    (async () => {
-      JikanWrap.request(['anime', this.getRanomdId(1, 10000)])
-        .then((anime) => {
-          console.log(anime);
-          this.animeList = anime;
-        });
-    })();
-    // const t = await this.searchResult;
-    // this.animeList = t.results;
+    const t = await this.searchResult;
+    this.animeList = t.results;
+    console.log(this.animeList);
   }
 }
 

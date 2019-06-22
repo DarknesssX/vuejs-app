@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>http://localhost:8080/</loc>
+      <lastmod>2019-06-23</lastmod>
+   </url>
+   <url>
+      <loc>http://localhost:8080/details</loc>
+      <lastmod>2019-06-23</lastmod>
+   </url>
+   <url>
+      <loc>http://localhost:8080/randomizer</loc>
+      <lastmod>2019-06-23</lastmod>
+   </url>
+</urlset> 
