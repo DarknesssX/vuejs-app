@@ -98,7 +98,7 @@ export default class GetAnimeDetails extends Vue {
   private goToDetails() {
     this.$router.push({path: '/details'});
   }
-
+  /* Sets the Column in order of the sorting function */
   private setColumn(column: string) {
     this.column = column;
   }

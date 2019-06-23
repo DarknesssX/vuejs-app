@@ -17,6 +17,7 @@
 </template>
 
 <style scoped>
+
   .full-width {
       margin: 0;
   }
@@ -90,7 +91,7 @@ export default class GetAnime extends Vue {
   private goToDetails() {
     this.$router.push({path: '/details'});
   }
-
+  /* Sets the Column in order of the sorting function */
   private setColumn(column: string) {
     this.column = column;
   }

@@ -85,6 +85,7 @@ export default class GetRandom extends Vue {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  /* Generates a random number that will be used to get the ID of a random result from the API */
   private GetNewRandom() {
       if (this.animeList) {
           (async () => {
