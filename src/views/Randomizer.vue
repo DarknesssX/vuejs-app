@@ -24,9 +24,14 @@
       padding-bottom: 23.85rem;
     }
   }
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     #randomizer {
       padding-bottom: 30.85rem;
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    #randomizer {
+      padding-bottom: 43.3rem;
     }
   }
 

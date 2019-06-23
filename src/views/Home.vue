@@ -20,9 +20,14 @@
   #home {
     padding-bottom: 1rem;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px){
     #home {
       padding-bottom: 3.4rem;
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    #home {
+      padding-bottom: 17rem;
     }
   }
 

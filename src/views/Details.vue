@@ -8,13 +8,19 @@
 
 <style scoped>
 
-.detailpage {
-  margin: 1rem;
-}
+  .detailpage {
+    margin: 1rem;
+  }
 
-.details-full--width {
-  margin: -1rem;
-}
+  .details-full--width {
+    margin: -1rem;
+  }
+
+  @media screen and (min-width: 1280px) {
+    #detail {
+      padding-bottom: 16.05rem;
+    }
+  }
 
 </style>
 
