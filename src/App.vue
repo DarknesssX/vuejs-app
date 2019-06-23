@@ -20,7 +20,6 @@
 
 #nav {
   padding: 0.5rem;
-  margin: 0 0 2rem 0;
   background: linear-gradient(#bd5d38, #e56f44);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
@@ -53,7 +52,7 @@ body {
 }
 
 .fixed-text {
-  padding-top: 90px;
+  padding-top: 70px;
 }
 
 </style>

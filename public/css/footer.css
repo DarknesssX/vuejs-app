@@ -17,3 +17,16 @@
 .row {
     margin: 1rem;
 }
+
+a {
+    color: rgba(255,255,255,0.5);
+}
+a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    position: absolute !important;
+    left: 0;
+    right: 0;
+}

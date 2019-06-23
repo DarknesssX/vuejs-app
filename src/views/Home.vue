@@ -9,13 +9,22 @@
 
 <style scoped>
 
-.home {
-  margin: 1rem;
-}
+  .home {
+    margin: 1rem;
+  }
 
-.home-full--width {
-  margin: -1rem;
-}
+  .home-full--width {
+    margin: -1rem;
+  }
+
+  #home {
+    padding-bottom: 1rem;
+  }
+  @media screen and (min-width: 768px) {
+    #home {
+      padding-bottom: 3.4rem;
+    }
+  }
 
 </style>
 

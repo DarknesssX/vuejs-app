@@ -4,7 +4,7 @@
       <thead class="table-header--background">
         <tr>
           <td class="table-width align-left"> Anime Title  </td>
-          <td class="table-width align-left"> Synopsis <button class="btn btn-primary" @click="setColumn('title')">Sort Table</button> </td>
+          <td class="table-width align-left"> Synopsis <button class="btn btn-primary" @click="setColumn('title')">Sort</button> </td>
         </tr>
       </thead>
       <tbody id="table-content" class="table-content--defaultbg">
